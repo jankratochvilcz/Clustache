@@ -1,0 +1,22 @@
+# Clustache
+
+## Local Setup
+
+### Metrics
+
+You'll need Prometheus and Grafana. Install this to your cluster via Helm.
+
+```bash
+helm install prometheus prometheus-community/prometheus
+helm install grafana grafana/grafana --set adminPassword='admin' --set service.type=LoadBalancer
+```
+
+## Hot Commands
+
+```bash
+docker build . -t clustache:latest
+kubectl rollout restart deployment clustache
+
+kubectl delete job k6-load-test
+kubectl apply -f k8s/k6/job.yaml
+```

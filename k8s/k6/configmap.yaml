@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k6-scripts
+data:
+  load-test.js: |
+    import http from 'k6/http';
+    import { check, sleep } from 'k6';
+    import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.1.0/index.js';
+
+    export const options = {
+      vus: 10, // number of virtual users
+      duration: '1h', // duration of the test
+    };
+
+    export default function () {
+      const url = `http://clustache-service:8080/api/CachedItem/item-${randomIntBetween(0, 250)}`;
+
+      const params = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+
+      const res = http.get(url, params);
+      check(res, { 'status was 200': (r) => r.status === 200 });
+      sleep(1);
+    }

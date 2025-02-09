@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clustache
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: clustache
+  template:
+    metadata:
+      labels:
+        app: clustache
+    spec:
+      containers:
+      - name: clustache
+        image: clustache:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
