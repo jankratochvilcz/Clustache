@@ -4,26 +4,23 @@ The core idea here is to use Redis pub/sub to sync in-memory cache within pods o
 
 ## Local Setup
 
-### Metrics
+Make sure you have the following installed:
+* Docker desktop - local Kubernetes cluster is enabled
+* Kubectl
+* Helm
+* (optional) Helm - UI for Kuberbetes
+* VS Code
 
-You'll need Prometheus and Grafana. Install this to your cluster via Helm.
+You have these tasks configured in VS Code. Run them in order.
+* `Clustache: Build image` - Builds images for .NET projects and adds them to local repository
+* `Clustache: Clustache: Ship chart` - Build Helm chart and applies them to cluster
 
-```bash
-helm install prometheus prometheus-community/prometheus
-helm install grafana grafana/grafana --set adminPassword='admin' --set service.type=LoadBalancer
-```
+When this is done, forward port (Lens has easy UI for this) for Grafana and open it in browser (user + password is admin for both).
+Next, add source (Connections -> Data sources), pick Prometheus, and for URL add `http://clustache-v0-prometheus-server:80`.
 
-## Hot Commands
+You should be set. The k6 job is running and metrics should be collected.
 
-```bash
-docker build . -t clustache:latest
-kubectl rollout restart deployment clustache
-
-kubectl delete job k6-load-test
-kubectl apply -f k8s/k6/job.yaml
-```
-
-## Grafana Queries
+Create a new dashboard and add the below queries, you should see data.
 
 ```
 // Cache fill rate

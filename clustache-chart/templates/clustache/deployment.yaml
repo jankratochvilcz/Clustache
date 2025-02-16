@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: clustache
+  name: {{ .Values.clustache.labelApp }}
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: clustache
+      app: {{ .Values.clustache.labelApp }}
   template:
     metadata:
       labels:
-        app: clustache
+        app: {{ .Values.clustache.labelApp }}
     spec:
       containers:
       - name: clustache
-        image: clustache:latest
+        image: {{ .Values.clustache.image  }}
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8080
+        - containerPort: {{ .Values.clustache.port }}
         env:
         - name: ASPNETCORE_ENVIRONMENT
           value: "Production"
