@@ -8,7 +8,7 @@ builder.Services.AddControllers();
 
 builder.Services
     .AddSingleton<CachedItemService>()
-    .AddSingleton(new RedisConfiguration { ConnectionString = "redis:6379" })
+    .AddSingleton(new RedisConfiguration { ConnectionString = "localhost:51160" })
     .AddSingleton<RedisService>();
 
 builder.Services.AddHostedService<CachedItemConsumerService>();

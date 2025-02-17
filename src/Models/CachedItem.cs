@@ -1,3 +1,5 @@
+namespace Models;
+
 public class CachedItem
 {
     public string ItemId { get; set; }
@@ -9,5 +11,5 @@ public class CachedItem
 public enum CachedItemOrigin
 {
     Source = 1,
-    RedisSubscription = 2
+    RedisSubscription = 2,
 }

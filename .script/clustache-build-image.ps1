@@ -1,4 +1,6 @@
-docker build . -t clustache:latest
+$currentDirectory = Get-Location
+$cacheServerDockerfile = Join-Path $currentDirectory "CacheServer.dockerfile"
+$databaseMockDockerfile = Join-Path $currentDirectory "DatabaseMock.dockerfile"
 
-# Restart the Kubernetes deployment
-# kubectl rollout restart deployment clustache
+docker build -f $cacheServerDockerfile -t clustache:latest .
+docker build -f $databaseMockDockerfile -t clustache-mock-database:latest .

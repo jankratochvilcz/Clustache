@@ -1,12 +1,12 @@
 {
   "profiles": {
-    "Clustache": {
+    "DatabaseMock": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:52028;http://localhost:52029"
+      "applicationUrl": "https://localhost:55448;http://localhost:55449"
     }
   }
 }

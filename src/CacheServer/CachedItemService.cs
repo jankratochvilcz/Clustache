@@ -1,18 +1,27 @@
-using Microsoft.Extensions.Logging;
-using Prometheus;
-using System;
 using System.Collections.Concurrent;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Models;
+using Prometheus;
 
 namespace Clustache.Services
 {
     public class CachedItemService
     {
         private const int ArtificialCacheFillFromSourceDelay = 1000;
-        private static Counter FilledFromSourceMetric = Metrics.CreateCounter("clustache_cache_filled_from_source", "Number of cache items filled from source");
-        private static Counter FilledFromCacheOwnMetric = Metrics.CreateCounter("clustache_cache_filled_from_cache_own", "Number of cache items filled from cache");
-        private static Counter FilledFromCacheSubscriptionMetric = Metrics.CreateCounter("clustache_cache_filled_from_cache_subscription", "Number of cache items filled from cache");
+        private static Counter FilledFromSourceMetric = Metrics.CreateCounter(
+            "clustache_cache_filled_from_source",
+            "Number of cache items filled from source"
+        );
+        private static Counter FilledFromCacheOwnMetric = Metrics.CreateCounter(
+            "clustache_cache_filled_from_cache_own",
+            "Number of cache items filled from cache"
+        );
+        private static Counter FilledFromCacheSubscriptionMetric = Metrics.CreateCounter(
+            "clustache_cache_filled_from_cache_subscription",
+            "Number of cache items filled from cache"
+        );
 
         private readonly ConcurrentDictionary<string, CachedItem> _cache = new();
         private readonly ILogger<CachedItemService> _logger;
@@ -26,7 +35,6 @@ namespace Clustache.Services
 
         public async Task<CachedItem> GetItem(string itemId)
         {
-
             // Gets from cache
             if (_cache.TryGetValue(itemId, out var cachedItem))
             {
@@ -50,7 +58,12 @@ namespace Clustache.Services
             // Needs to fill the cache first, simulate a delay
             await Task.Delay(ArtificialCacheFillFromSourceDelay);
 
-            CachedItem itemFromSource = new CachedItem { ItemId = itemId, ItemValue = "demovalue", Origin = CachedItemOrigin.Source };
+            CachedItem itemFromSource = new CachedItem
+            {
+                ItemId = itemId,
+                ItemValue = "demovalue",
+                Origin = CachedItemOrigin.Source,
+            };
             AddOrUpdateLocalCache(itemFromSource);
             FilledFromSourceMetric.Inc();
 
@@ -68,7 +81,7 @@ namespace Clustache.Services
 
             _cache[item.ItemId] = item;
 
-            if(broadcastCachedItem)
+            if (broadcastCachedItem)
                 BroadcastCachedItem(item);
         }
 

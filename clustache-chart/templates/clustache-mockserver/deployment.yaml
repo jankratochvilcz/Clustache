@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.clustachemockserver.labelApp }}
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: {{ .Values.clustachemockserver.labelApp }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.clustachemockserver.labelApp }}
+    spec:
+      containers:
+      - name: clustachemockserver
+        image: {{ .Values.clustachemockserver.image  }}
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: {{ .Values.clustachemockserver.port }}
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"

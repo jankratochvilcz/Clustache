@@ -1,10 +1,9 @@
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using StackExchange.Redis;
-using System.Diagnostics.Metrics;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Models;
 
 namespace Clustache.Services
 {
@@ -14,7 +13,11 @@ namespace Clustache.Services
         private readonly RedisService _redisService;
         private readonly CachedItemService _cachedItemService;
 
-        public CachedItemConsumerService(ILogger<CachedItemConsumerService> logger, RedisService redisService, CachedItemService cachedItemService)
+        public CachedItemConsumerService(
+            ILogger<CachedItemConsumerService> logger,
+            RedisService redisService,
+            CachedItemService cachedItemService
+        )
         {
             _logger = logger;
             _redisService = redisService;
