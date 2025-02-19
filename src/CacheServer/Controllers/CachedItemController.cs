@@ -1,6 +1,7 @@
+using System.Threading.Tasks;
 using Clustache.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+using Models;
 
 [ApiController]
 [Route("api/[controller]")]

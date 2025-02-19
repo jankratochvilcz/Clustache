@@ -5,6 +5,10 @@ VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clustache", "src/CacheServer/Clustache.csproj", "{ECFD8C7D-C8FD-4D73-9685-FEADB78C3952}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBB}") = "DatabaseMock", "src/DatabaseMock/DatabaseMock.csproj", "{ECFD8C7D-C8FD-4D73-9685-FEADB78C3953}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBA}") = "Models", "src/Models/Models.csproj", "{ECFD8C7D-C8FD-4D73-9685-FEADB78C3954}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{ECFD8C7D-C8FD-4D73-9685-FEADB78C3952}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECFD8C7D-C8FD-4D73-9685-FEADB78C3952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECFD8C7D-C8FD-4D73-9685-FEADB78C3952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECFD8C7D-C8FD-4D73-9685-FEADB78C3953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECFD8C7D-C8FD-4D73-9685-FEADB78C3953}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECFD8C7D-C8FD-4D73-9685-FEADB78C3953}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECFD8C7D-C8FD-4D73-9685-FEADB78C3953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECFD8C7D-C8FD-4D73-9685-FEADB78C3954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECFD8C7D-C8FD-4D73-9685-FEADB78C3954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECFD8C7D-C8FD-4D73-9685-FEADB78C3954}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECFD8C7D-C8FD-4D73-9685-FEADB78C3954}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

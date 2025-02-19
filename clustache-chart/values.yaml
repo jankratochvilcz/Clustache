@@ -4,7 +4,18 @@ clustache:
   port: 8080
   image: clustache:latest
 
+clustachemockserver:
+  serviceName: clustache-mock-database-service
+  labelApp: clustache-mock-database
+  port: 8081
+  image: clustache-mock-database:latest
+
+
 grafana:
   adminPassword: admin
   service:
     type: LoadBalancer
+
+redis:
+  serviceName: redis
+  port: 6379

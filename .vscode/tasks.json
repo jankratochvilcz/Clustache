@@ -14,19 +14,31 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "Clustache: Watch",
+            "label": "Clustache: CacheServer: Debug",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/Clustache.sln"
+                "${workspaceFolder}/src/CacheServer/Clustache.csproj"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "Clustache: Build image",
+            "label": "Clustache: MockServer: Debug",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/src/DatabaseMock/DatabaseMock.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Clustache: Build images",
             "type": "shell",
             "command": "powershell",
             "options": {
