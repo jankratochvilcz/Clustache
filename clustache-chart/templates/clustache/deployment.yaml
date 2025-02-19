@@ -22,6 +22,10 @@ spec:
         - name: ASPNETCORE_ENVIRONMENT
           value: "Production"
         - name: REDIS_PATH
-          value: {{.Values.redis.serviceName }}
+          value: {{ .Values.redis.serviceName }}
         - name: REDIS_PORT
-          value: {{.Values.redis.port | quote }}
+          value: {{ .Values.redis.port | quote }}
+        - name: DATABASE_PATH
+          value: {{ .Values.clustachemockserver.serviceName }}
+        - name: DATABASE_PORT
+          value: {{.Values.clustachemockserver.port | quote }}
