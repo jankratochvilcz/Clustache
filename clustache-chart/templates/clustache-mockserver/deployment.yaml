@@ -17,7 +17,7 @@ spec:
         image: {{ .Values.clustachemockserver.image  }}
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: {{ .Values.clustachemockserver.port }}
+        - containerPort: 8080
         env:
         - name: ASPNETCORE_ENVIRONMENT
           value: "Production"

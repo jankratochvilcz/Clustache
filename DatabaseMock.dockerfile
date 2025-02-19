@@ -11,8 +11,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app
 COPY --from=build /src/out .
 
-# Expose port 80
-EXPOSE 8081
+EXPOSE 8080
 
 # Set the entry point for the container
 ENTRYPOINT ["dotnet", "DatabaseMock.dll"]

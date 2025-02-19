@@ -12,9 +12,10 @@ app.MapGet(
     "/item/{id}",
     async (string id) => {
         var delay = new Random().Next(20, 1000);
+        Console.WriteLine($"Delaying for {delay}ms");
         await Task.Delay(delay);
 
         return new CachedItem { ItemId = id, ItemValue = Guid.NewGuid().ToString()};
     }
 );
-app.Run("http://localhost:8081");
+app.Run();
