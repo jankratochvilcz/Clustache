@@ -11,11 +11,13 @@ Make sure you have the following installed:
 * (optional) Helm - UI for Kuberbetes
 * VS Code
 
+Start by running `cd .\clustache-chart\` and `helm dependency build` to download Prometheus and Grafana charts for deployment.
+
 You have these tasks configured in VS Code. Run them in order.
 * `Clustache: Build image` - Builds images for .NET projects and adds them to local repository
 * `Clustache: Clustache: Ship chart` - Build Helm chart and applies them to cluster
 
-When this is done, forward port (Lens has easy UI for this) for Grafana and open it in browser (user + password is admin for both).
+When this is done, forward port (Lens has easy UI for this) for Grafana (`clustache-v0-grafana` service name) and open it in browser (user + password is `admin` for both).
 Next, add source (Connections -> Data sources), pick Prometheus, and for URL add `http://clustache-v0-prometheus-server:80`.
 
 You should be set. The k6 job is running and metrics should be collected.
